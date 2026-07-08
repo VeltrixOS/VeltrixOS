@@ -8,4 +8,4 @@ An Operating System created for users who value system efficiency and speed, pow
 * **Built for Power Users:** Complete control over your compilation and system environment.
 
 ---
-*Developed by @zawix*
+*Developed by @zawix21*
