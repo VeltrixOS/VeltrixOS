@@ -1,27 +1,45 @@
 ---
 name: Bug report
-about: Create a report to help us improve VeltrixOS and VPM
+about: Something in VeltrixOS or VPM does not work as expected
 title: '[BUG] '
 labels: bug
 assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+<!-- Security vulnerability? Do NOT open an issue. See SECURITY.md. -->
 
-**To Reproduce**
-Steps to reproduce the behavior (e.g., the exact commands you ran in the terminal).
+## Component
+<!-- Mark one with an [x] -->
+- [ ] VPM (package manager)
+- [ ] Package recipe / build from source
+- [ ] Kernel / boot (GRUB, initramfs)
+- [ ] ISO / installer
+- [ ] Other:
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+## What happened
+<!-- One or two sentences. What did you see? -->
 
-**Logs / Error Output**
+## What you expected
+<!-- What should have happened instead? -->
+
+## Steps to reproduce
+<!-- Exact commands, in order, so we can repeat the bug. -->
+1.
+2.
+3.
+
+## Logs / error output
+<!-- Paste the full error: compiler output, VPM output, segfault, dmesg. -->
 ```text
-[Paste your compiler errors, VPM output, or Segmentation fault logs here]
+
 ```
 
-**Environment**
+## Environment
 - VeltrixOS version (`cat /etc/os-release`):
-- VPM version:
+- VPM version (e.g. 1.0.1):
 - Kernel (`uname -r`):
+- Package being built (if any):
+
+## Additional context
+<!-- Anything else: how often it happens, a workaround, related issues. -->

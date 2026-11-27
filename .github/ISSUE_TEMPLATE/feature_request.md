@@ -1,20 +1,34 @@
 ---
 name: Feature request
-about: Suggest an idea for VeltrixOS or VPM
+about: Suggest an idea or improvement for VeltrixOS or VPM
 title: '[FEATURE] '
 labels: enhancement
 assignees: ''
 
 ---
 
-**Problem**
-What problem does this solve?
+## Component
+<!-- Mark one with an [x] -->
+- [ ] VPM (package manager)
+- [ ] Package recipe / build from source
+- [ ] Kernel / boot
+- [ ] ISO / installer
+- [ ] Docs / tooling
+- [ ] Other:
 
-**Proposed solution**
-What should VeltrixOS or VPM do?
+## Problem
+<!-- What is hard, missing or slow today? Describe the situation, not the solution. -->
 
-**Alternatives considered**
-Other approaches you thought about.
+## Proposed solution
+<!-- What should VeltrixOS or VPM do? Example commands or output help. -->
 
-**Impact on performance / build independence**
-Does it add bloat or depend on the host system?
+## Alternatives considered
+<!-- Other approaches, or why existing tools do not fit. -->
+
+## Impact
+<!-- VeltrixOS goals: speed, no bloat, builds independent from the host. -->
+- Adds dependencies or runtime cost?
+- Needs anything from the host system?
+
+## Additional context
+<!-- Links, related issues, mockups. -->
