@@ -1,1 +1,26 @@
+# Build output
 build
+
+# Compiled objects and libraries
+*.o
+*.obj
+*.a
+*.so
+*.so.*
+*.d
+
+# Images and archives
+*.iso
+*.img
+*.tar
+*.tar.*
+
+# Editors and tools
+.vscode/
+.idea/
+*.swp
+*~
+.claude/
+
+# OS
+.DS_Store

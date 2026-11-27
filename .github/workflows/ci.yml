@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Builds every project in src/<project>/ that has a Makefile or CMakeLists.txt.
+      # With no projects yet this job passes without doing anything.
+      - name: Build and test projects
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for dir in src/*/; do
+            if [ -f "${dir}CMakeLists.txt" ]; then
+              cmake -S "$dir" -B "${dir}build" -DCMAKE_BUILD_TYPE=Release
+              cmake --build "${dir}build" --parallel
+              ctest --test-dir "${dir}build" --output-on-failure
+            elif [ -f "${dir}Makefile" ]; then
+              make -C "$dir" -j"$(nproc)"
+              if make -C "$dir" -n test >/dev/null 2>&1; then make -C "$dir" test; fi
+            else
+              echo "skip $dir (no build file)"
+            fi
+          done
