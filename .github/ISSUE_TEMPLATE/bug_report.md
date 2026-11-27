@@ -19,3 +19,9 @@ A clear and concise description of what you expected to happen.
 **Logs / Error Output**
 ```text
 [Paste your compiler errors, VPM output, or Segmentation fault logs here]
+```
+
+**Environment**
+- VeltrixOS version (`cat /etc/os-release`):
+- VPM version:
+- Kernel (`uname -r`):
