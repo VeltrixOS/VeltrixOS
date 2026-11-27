@@ -1,0 +1,13 @@
+title: "[Show] "
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What did you build or set up?
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link
+      description: Repository, screenshot or write-up (optional).

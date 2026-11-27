@@ -1,0 +1,23 @@
+title: "[Q&A] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ask the community for help. Found a bug? Open a bug report issue instead. Security problem? See SECURITY.md.
+  - type: textarea
+    id: goal
+    attributes:
+      label: What are you trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: tried
+    attributes:
+      label: What did you try?
+      description: Exact commands and their output.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: VeltrixOS and VPM version
+      placeholder: "0.2.0, VPM 1.0.1"
