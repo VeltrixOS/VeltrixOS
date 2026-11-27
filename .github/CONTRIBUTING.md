@@ -18,7 +18,7 @@
 
 1. **Discuss.** Pick an open [issue](https://github.com/VeltrixOS/VeltrixOS/issues) or open one to talk about your idea first.
 2. **Fork** the repository and create a branch from `main`.
-3. **Build and test** your change. See the project's own README for commands.
+3. **Build and test** your change. See the project's own README for commands. CI builds every project in `src/<project>/` that has a `meson.build`, `CMakeLists.txt` or `Makefile`. List extra apt packages a project needs, one per line, in `src/<project>/ci-packages.txt`.
 4. **Open a pull request** using the template and paste your build and test output.
 
 > [!TIP]

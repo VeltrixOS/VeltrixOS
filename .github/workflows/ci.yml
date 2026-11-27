@@ -14,15 +14,34 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      # Builds every project in src/<project>/ that has a Makefile or CMakeLists.txt.
-      # With no projects yet this job passes without doing anything.
+      # Installs Meson and Ninja when a project uses them, plus the packages a
+      # project lists in src/<project>/ci-packages.txt (one apt package per line).
+      - name: Install build tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          pkgs=""
+          if compgen -G "src/*/meson.build" >/dev/null; then pkgs="meson ninja-build pkg-config"; fi
+          for f in src/*/ci-packages.txt; do pkgs="$pkgs $(grep -v '^#' "$f" | tr '\n' ' ')"; done
+          if [ -n "${pkgs// /}" ]; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends $pkgs
+          fi
+
+      # Builds every project in src/<project>/ that has a meson.build,
+      # CMakeLists.txt or Makefile. With no projects yet this job passes without doing anything.
       - name: Build and test projects
         shell: bash
         run: |
           set -euo pipefail
           shopt -s nullglob
           for dir in src/*/; do
-            if [ -f "${dir}CMakeLists.txt" ]; then
+            if [ -f "${dir}meson.build" ]; then
+              meson setup "${dir}build" "$dir" --buildtype=release
+              ninja -C "${dir}build"
+              meson test -C "${dir}build" --print-errorlogs
+            elif [ -f "${dir}CMakeLists.txt" ]; then
               cmake -S "$dir" -B "${dir}build" -DCMAKE_BUILD_TYPE=Release
               cmake --build "${dir}build" --parallel
               ctest --test-dir "${dir}build" --output-on-failure
