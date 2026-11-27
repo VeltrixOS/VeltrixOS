@@ -7,7 +7,7 @@
 Everything is compiled on your machine by **VPM**, a custom package manager written in pure C++.
 
 [![Download](https://img.shields.io/badge/download-ISO-orange?style=for-the-badge)](https://veltrixos.vercel.app/download)
-[![Release](https://img.shields.io/badge/release-0.2.0%20experimental-blue?style=for-the-badge)](https://github.com/VeltrixOS/VeltrixOS/releases/tag/v0.2.0)
+[![Release](https://img.shields.io/badge/release-0.2.0%20experimental-blue?style=for-the-badge)](https://github.com/VeltrixOS/VeltrixOS/releases/tag/2026-11-03)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green?style=for-the-badge)](LICENSE)
 [![CI](https://img.shields.io/github/actions/workflow/status/VeltrixOS/VeltrixOS/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/VeltrixOS/VeltrixOS/actions/workflows/ci.yml)
 
