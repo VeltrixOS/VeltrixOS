@@ -33,6 +33,9 @@ jobs:
           args: >-
             --no-progress
             --accept 200,206,429
+            --max-retries 3
+            --retry-wait-time 10
+            --timeout 30
             --exclude 'security/advisories/new'
             './**/*.md'
           fail: true

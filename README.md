@@ -41,18 +41,21 @@ Everything is compiled on your machine by **VPM**, a custom package manager writ
 <td width="33%" valign="top">
 
 ### ⚡ Zero bloat
+
 Engineered for raw performance and maximum efficiency. Nothing you did not ask for.
 
 </td>
 <td width="33%" valign="top">
 
 ### 🔨 Built from source
+
 Every package is compiled locally, with full control over flags and the build environment.
 
 </td>
 <td width="33%" valign="top">
 
 ### 📦 Custom package manager
+
 VPM is independent and written from scratch in pure C++.
 
 </td>
