@@ -70,13 +70,84 @@ VPM is independent and written from scratch in pure C++.
 
 ## 📦 VPM
 
-**VPM** (VeltrixOS Package Manager) builds packages from source.
+**VPM** (VeltrixOS Package Manager) is a source-based package manager written in C++, built around Portage-style ebuilds. It resolves dependency graphs offline, builds packages in parallel and can install from previously built binary packages.
+
+| | Feature | What it does |
+|---|---------|--------------|
+| 🌐 | **Offline resolver** | Scans the local ebuild tree directly. No remote API calls, so large dependency graphs do not depend on the network. |
+| ⚙️ | **Parallel builds** | A scheduler builds packages concurrently and respects the dependency build order. |
+| 📦 | **Binary packages** | Every build can be kept as a `.vpk` archive and reinstalled without compiling. |
+| 🩹 | **Self-healing builds** | `AutoFixer` recognizes common build failures (missing headers, bad compiler flags) and retries. `HeuristicEngine` learns which fix worked for which error. |
+| ⏪ | **Snapshots & rollback** | System state is snapshotted before a transaction. `vpm rollback` restores it. |
+| 🧮 | **VDRA job limits** | Detects CPUs and RAM (cgroup aware) and limits build jobs so large builds do not exhaust the machine. |
+
+### Quick start
 
 ```bash
-# install a package (add -y to answer yes to every prompt)
-vpm install <package>
-vpm install <package> -y
+vpm sync                  # fetch the ebuild tree and index
+vpm search <pattern>      # find a package
+vpm install <package>     # build and install it
 ```
+
+<details>
+<summary><code>&lt;/&gt;</code> All commands</summary>
+
+<br>
+
+| Command | Description |
+|---------|-------------|
+| `vpm install <pkg>` | Install or update a package |
+| `vpm remove <pkg>` | Remove a package |
+| `vpm update <pkg>` | Update a package to the newest version in the tree |
+| `vpm upgrade` | Upgrade all installed packages |
+| `vpm rollback` | Undo the last operation (snapshot) |
+| `vpm search <pattern>` | Search available packages |
+| `vpm info <pkg>` | Package metadata and install state |
+| `vpm files <pkg>` | List files owned by a package |
+| `vpm list-installed` | List installed packages |
+| `vpm depclean` | Remove packages no longer needed |
+| `vpm sync` | Synchronize the full ebuild tree |
+| `vpm sync-index` | Rebuild the repository index |
+| `vpm graph <pkg>` | Export the dependency graph (Graphviz DOT) |
+| `vpm check` | Verify database and file consistency |
+| `vpm clean` | Clear download and build caches |
+
+Run `vpm --help` for the full list.
+
+</details>
+
+<details>
+<summary><code>&lt;/&gt;</code> Configuration</summary>
+
+<br>
+
+VPM reads `vpm.conf`, `make.conf` and `repos.conf` from `/etc/vpm`.
+
+| Option | Default | Effect |
+|--------|---------|--------|
+| `COMMITS` | `yes` | Keep rollback snapshots. `no` saves disk, but `vpm rollback` stops working. |
+| `BINPKG` | `yes` | Keep a `.vpk` of every build. `no` saves disk, but a reinstall recompiles. |
+| `VDRA` | on | `VDRA=off` disables the RAM/CPU job limits. |
+
+</details>
+
+<details>
+<summary><code>&lt;/&gt;</code> Build VPM from source</summary>
+
+<br>
+
+```bash
+meson setup build
+ninja -C build
+meson test -C build
+```
+
+| | Dependencies |
+|---|---|
+| **Required** | `sqlite3`, `glib-2.0`, `libcurl`, `openssl`, `libarchive`, `pkg-config`, `meson`, `ninja` |
+| **Optional** | `ostree-1`, `gpgme`, `appstream`, `libcap` (each one disables its feature when missing) |
+
+</details>
 
 VPM source: [VeltrixOS-Package-Manager](https://github.com/VeltrixOS/VeltrixOS-Package-Manager)
 
