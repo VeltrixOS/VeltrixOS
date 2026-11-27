@@ -18,6 +18,6 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 First experimental ISO ("First VPM v1.0.1 Preview").
 
 ### Added
-- Experimental ISO image `veltrixos-experimental-v0.2.0.iso` with SHA-256 checksum.
+- Experimental ISO image `veltrixos-experimental-v0.2.0.iso` with SHA-256 checksum. Download: https://veltrixos.vercel.app/download
 - Kernel `6.18.10-VeltrixOS`.
 - VPM (VeltrixOS Package Manager) v1.0.1 preview.
