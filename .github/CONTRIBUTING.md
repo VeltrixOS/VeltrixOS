@@ -72,6 +72,10 @@ Short imperative subject, about 50 characters. Add a body when the reason is not
 
 </details>
 
+## 🌍 Code of conduct
+
+By taking part you agree to follow our [Code of Conduct](../CODE_OF_CONDUCT.md).
+
 ## 🔒 Security
 
 > [!IMPORTANT]
